@@ -7,11 +7,14 @@ Meteor.startup(() => {
 
 	Meteor.method("produto", function(id) {
 		var product = Products.findOne({idProduto: parseInt(id, 10)});
-		return {
-			idProduto: product.idProduto,
-			nome: product.nome,
-			valor: product.valor
-		};
+		if(product)
+			return {
+				idProduto: product.idProduto,
+				nome: product.nome,
+				valor: product.valor
+			};
+		else
+			return -1;
 	}, {
 		url: "produto/:0",
 		httpMethod: "get"
