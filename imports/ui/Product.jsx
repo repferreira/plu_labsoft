@@ -3,8 +3,10 @@ import React, { Component, PropTypes } from 'react';
 // Task component - represents a single todo item
 export default class Product extends Component {
   render() {
+	var valor = 2;// this.props.product.valor/100;
+	valor.toFixed(2);
     return (
-      <li>{this.props.product.idProduto}: {this.props.product.nome} (R${this.props.product.valor/100})</li>
+      <li>{this.props.product.idProduto}: {this.props.product.nome} - R${(this.props.product.valor/100).toFixed(2)}</li>
     );
   }
 }

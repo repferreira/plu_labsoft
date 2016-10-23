@@ -1,4 +1,6 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
  
 export const Products = new Mongo.Collection('products');
 
@@ -12,6 +14,13 @@ if(Meteor.isServer) {
 			check(idProduto, Number);
 			check(nome, String);
 			check(valor, Number);
-		}
+
+			Products.insert({
+				idProduto,
+				nome,
+				valor,
+				createdAt: new Date(),
+			});
+		},
 	});
 }
