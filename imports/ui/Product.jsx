@@ -4,7 +4,13 @@ import React, { Component, PropTypes } from 'react';
 export default class Product extends Component {
   render() {
     return (
-      <li>{this.props.product.idProduto}: {this.props.product.nome} - R${(this.props.product.valor/100).toFixed(2)}</li>
+    	<div className="produto">
+          <p className="text text-1">{this.props.product.idProduto}</p>
+          <p className="text text-2">Categoria 1</p>
+          <p className="text text-3">R${(this.props.product.valor/100).toFixed(2)}</p>
+          <p className="text text-4">Marca 1</p>
+          <p className="text text-5">{this.props.product.nome}</p>
+        </div>
     );
   }
 }
