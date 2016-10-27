@@ -14,13 +14,19 @@ if(Meteor.isServer) {
 			check(idProduto, Number);
 			check(nome, String);
 			check(valor, Number);
-
+			
+			var sameIdProducts = Products.find({idProduto: idProduto}).fetch();
+			if(sameIdProducts.length > 0) {
+				return;
+			}
+			
 			Products.insert({
 				idProduto,
 				nome,
 				valor,
 				createdAt: new Date(),
 			});
+			
 		},
 	});
 }

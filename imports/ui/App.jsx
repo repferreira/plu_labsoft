@@ -16,9 +16,10 @@ export default class App extends Component {
     const nome = ReactDOM.findDOMNode(this.refs.nomeInput).value.trim();
     const valor = parseInt(ReactDOM.findDOMNode(this.refs.valorInput).value.trim(), 10);
 
-    if(id && nome && valor)
-      Meteor.call('products.insert', id, nome, valor);
-
+	if(!isNaN(id) && nome.length > 0 && !isNaN(valor)) {
+		Meteor.call('products.insert', id, nome, valor);
+	}
+	
     // Clear form
     ReactDOM.findDOMNode(this.refs.idInput).value = '';
     ReactDOM.findDOMNode(this.refs.nomeInput).value = '';
